@@ -17,7 +17,7 @@ module Fastlane
           ]
           UI.error(error.join("\n"))
         end
-        return provisions_pairs.map { |pair| pair.split(":").map { |value| value.strip } }
+        return provisions_pairs.map { |pair| pair.split(":").map(&:strip) }
       end
     end
   end
