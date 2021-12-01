@@ -9,13 +9,19 @@ This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To 
 ```bash
 fastlane add_plugin eln
 ```
+Choose Git URL and enter the URL of this repository.
 
-## About eln
+## About ELN
 
-E-Legion
+ELN is a set of lanes which can automate some routines in CI actions.
 
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+### Available actions
+|Action|Description|
+|------|-----------|
+|eln_certs_get|Gets all private certificates and provision described in  ELN_CERTS_PROVISION_PROFILE_NAME_LIST environment variable|
+|eln_certs_update|Adds new developer devices to developer.apple from file described in FL_REGISTER_DEVICES_FILE and force update provisions from ELN_CERTS_PROVISION_PROFILE_NAME_LIST|
 
+**Important note:** Make sure you already added MATCH environment variables.
 ## Example
 
 Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.

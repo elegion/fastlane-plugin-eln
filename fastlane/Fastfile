@@ -1,3 +1,13 @@
 lane :test do
-  eln
+  eln_certs_get
+  eln_certs_update
+end
+
+lane :test_params do 
+  eln_certs_get(
+    eln_certs_provision_profile_name_list: "Some App Name:com.team.some-app,Some Extension Name:com.team.some-extension"
+  )
+  eln_certs_update(
+    eln_certs_provision_profile_name_list: "Some App Name:com.team.some-app,Some Extension Name:com.team.some-extension"
+  )
 end
