@@ -6,7 +6,8 @@ module Fastlane
   module Actions
     class ElnCertsGetAction < ElnCertsAction
       def self.run(params)
-        provisions_pairs = Helper::CertsHelper.validate_provisions(params)
+        list = params[:eln_certs_provision_profile_name_list]
+        provisions_pairs = Helper::CertsHelper.validate_provisions(list)
         provisions_pairs.each do |key, value|
           other_action.match(
             profile_name: key,
