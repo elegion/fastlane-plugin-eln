@@ -5,10 +5,9 @@ module Fastlane
 
   module Helper
     class CertsHelper
-
       def self.validate_provisions(params)
         provisions_pairs = params[:eln_certs_provision_profile_name_list].split(",")
-        possible_wrong_pair = provisions_pairs.select { |pair| !!pair[/.+[:].+/] == false }
+        possible_wrong_pair = provisions_pairs.select { |pair| !!pair[/.+:.+/] == false }
         unless possible_wrong_pair.length == 0
           error = [
             "Invalid format for next pairs:"

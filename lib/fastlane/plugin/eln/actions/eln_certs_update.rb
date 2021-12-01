@@ -4,14 +4,11 @@ require_relative 'eln_certs'
 
 module Fastlane
   module Actions
-
     class ElnCertsUpdateAction < ElnCertsAction
       def self.run(params)
         provisions_pairs = Helper::CertsHelper.validate_provisions(params)
         other_action.register_devices
-        provisions_pairs.each {
-          |key, value|
-
+        provisions_pairs.each do |key, value|
           other_action.match(
             profile_name: key,
             app_identifier: value,
@@ -19,7 +16,7 @@ module Fastlane
             force_for_new_devices: false,
             force: false
           )
-        }
+        end
       end
 
       def self.description
