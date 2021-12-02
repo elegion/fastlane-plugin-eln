@@ -12,7 +12,7 @@ module Fastlane
           other_action.match(
             profile_name: key,
             app_identifier: value,
-            readonly: true,
+            readonly: false,
             force_for_new_devices: true,
             force: true
           )
