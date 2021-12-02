@@ -13,8 +13,8 @@ module Fastlane
             profile_name: key,
             app_identifier: value,
             readonly: true,
-            force_for_new_devices: false,
-            force: false
+            force_for_new_devices: true,
+            force: true
           )
         end
       end
