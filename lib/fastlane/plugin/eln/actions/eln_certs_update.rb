@@ -7,7 +7,9 @@ module Fastlane
       def self.run(params)
         list = params[:eln_certs_provision_profile_name_list]
         provisions_pairs = Helper::CertsHelper.validate_provisions(list)
-        other_action.register_devices
+        if params[:eln_certs_should_register_devices]
+          other_action.register_devices
+        end
         provisions_pairs.each do |key, value|
           other_action.match(
             profile_name: key,
@@ -43,7 +45,13 @@ module Fastlane
                                         type: String,
                                         verify_block: proc do |value|
                                           UI.user_error("Certificates and provisions are empty!") unless value && !value.empty?
-                                        end)
+                                        end),
+          FastlaneCore::ConfigItem.new(key: :eln_certs_should_register_devices,
+                                  env_name: "ELN_CERTS_SHOULD_REGISTER_DEVICES",
+                               description: "Should register new devices on update lane",
+                             default_value: false,
+                                  optional: true,
+                                      type: Boolean)
         ]
       end
 
